@@ -1,0 +1,19 @@
+.form {
+  .form-label-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 .2rem;
+    margin-bottom: .2rem;
+  }
+  .form-field {
+    margin-bottom: 1rem;
+  }
+  .form-button {
+    width: 100%;
+  }
+  .form-message {
+    color: red;
+    font-size: .8rem;
+  }
+}
