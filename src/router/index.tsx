@@ -3,6 +3,7 @@ import {
 } from 'react-router-dom'
 import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
+import Counter from '@/features/counter/Counter'
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: '/sign-up',
     element: <SignUp />
+  },
+  {
+    path: '/counter',
+    element: <Counter />
   }
 ])
 
