@@ -1,18 +1,16 @@
 import {
-  createBrowserRouter
+  createBrowserRouter,
+  Navigate
 } from 'react-router-dom'
-import SignIn from '../pages/SignIn'
-import SignUp from '../pages/SignUp'
+import Home from '@/pages/Home'
+import SignIn from '@/pages/SignIn'
+import SignUp from '@/pages/SignUp'
 import Counter from '@/features/counter/Counter'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: (
-      <div>
-        <h1>Hello World!</h1>
-      </div>
-    )
+    element: <Home />
   },
   {
     path: '/sign-in',
@@ -25,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: '/counter',
     element: <Counter />
+  },
+  {
+    path: '*',
+    element: <Navigate to="/" replace />
   }
 ])
 

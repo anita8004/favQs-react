@@ -1,9 +1,15 @@
 import { Flex, Box, TextField, Heading, Link, Button } from '@radix-ui/themes'
 import * as Form from '@radix-ui/react-form'
 import { Link as RouterLink } from "react-router-dom";
-import userApi, { SignInPayloadState } from '@/apis/user'
+import userApi from '@/apis/user'
+import { SignInPayloadState } from '@/types/user'
+import { useDispatch } from 'react-redux'
+import { setSession } from '@/store/reducers/userSlice'
+import { useNavigate } from 'react-router-dom';
 
 function SignIn() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const signIn = async (event: SubmitEvent) => {
     event.preventDefault();
@@ -14,7 +20,9 @@ function SignIn() {
     }
     try {
       const res = await userApi.createSession({ user: payload });
-      console.log(res);
+      console.log(res)
+      dispatch(setSession(res));
+      navigate('/');
     } catch (err) {
       console.log(err);
     }

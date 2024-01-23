@@ -10,3 +10,6 @@ https://favqs.com/api
 - [react-router](https://reactrouter.com/en/main)
 - [radix-ui](https://www.radix-ui.com/)
 - [styled-components](https://styled-components.com/)
+- [stokado](https://github.com/KID-joker/stokado?tab=readme-ov-file)
+- [js-cookie](https://github.com/js-cookie/js-cookie/tree/latest#readme)
+- [axios](https://axios-http.com/zh/docs/intro)
