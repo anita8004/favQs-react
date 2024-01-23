@@ -1,8 +1,25 @@
 import { Flex, Box, TextField, Heading, Link, Button } from '@radix-ui/themes'
 import * as Form from '@radix-ui/react-form'
 import { Link as RouterLink } from "react-router-dom";
+import userApi, { SignInPayloadState } from '@/apis/user'
 
 function SignIn() {
+
+  const signIn = async (event: SubmitEvent) => {
+    event.preventDefault();
+    const data = Object.fromEntries(new FormData(event.currentTarget as HTMLFormElement));
+    const payload: SignInPayloadState = {
+      login: data.email as string,
+      password: data.password  as string
+    }
+    try {
+      const res = await userApi.createSession({ user: payload });
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <div className="full-page">
       <Flex 
@@ -18,11 +35,7 @@ function SignIn() {
             className='full-page-title'
           >FavQs</Heading>
           <Form.Root className='form'
-            onSubmit={(event) => {
-              event.preventDefault();
-              const data = Object.fromEntries(new FormData(event.currentTarget));
-              console.log(data)
-            }}
+            onSubmit={signIn}
           >
             <Form.Field className='form-field' name="email">
               <div className='form-label-wrapper'>
