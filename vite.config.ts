@@ -5,7 +5,7 @@ import path from 'node:path'
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   let proxy: any = {}
-
+  console.log(mode);
   if (mode === 'development') {
     proxy = {
       '/api': {
