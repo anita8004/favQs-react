@@ -11,9 +11,9 @@ function SignIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const signIn = async (event: SubmitEvent) => {
+  const signIn = async ( event: any ) => {
     event.preventDefault();
-    const data = Object.fromEntries(new FormData(event.currentTarget as HTMLFormElement));
+    const data = Object.fromEntries(new FormData(event.currentTarget));
     const payload: SignInPayloadState = {
       login: data.email as string,
       password: data.password  as string

@@ -9,7 +9,7 @@ import { removeSession } from '@/store/reducers/userSlice'
 function Home() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const sessionData = useSelector((state) => state.user.session);
+  const sessionData = useSelector((state: any) => state.user.session);
   const isLoggedIn = sessionData?.login
 
   useEffect(() => {
