@@ -11,7 +11,8 @@ const instance = axios.create({
     'Authorization': `Token token=${import.meta.env.VITE_API_TOKEN}`,
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*'
-  }
+  },
+  withCredentials: false
 });
 
 instance.interceptors.response.use(
