@@ -1,10 +1,10 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: '/api',
+  baseURL: import.meta.env.VITE_API_KEY,
   timeout: 10000,
   headers: {
-    'Authorization': 'Token token=8e5601340ccf11d6f6689bfa2f7a73c0',
+    'Authorization': `Token token=${import.meta.env.VITE_API_TOKEN}`,
     'Content-Type': 'application/json'
   }
 });
