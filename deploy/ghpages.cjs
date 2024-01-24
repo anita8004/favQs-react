@@ -1,5 +1,7 @@
-import path from 'path'
-import ghpages from 'gh-pages'
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
+const path = require('path');
+const ghpages = require('gh-pages');
 
 const options = {
   branch: 'gh-pages',
@@ -12,4 +14,4 @@ const callback = err => {
 }
 
 // eslint-disable-next-line no-undef
-ghpages.publish(path.resolve(__dirname, '../dist', options, callback));
+ghpages.publish(path.resolve(__dirname, '../dist'), options, callback);
