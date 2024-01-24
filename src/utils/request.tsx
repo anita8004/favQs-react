@@ -1,4 +1,8 @@
 import axios from 'axios'
+import { local } from 'stokado'
+
+local.api = import.meta.env.VITE_API_KEY;
+local.appToken = import.meta.env.VITE_API_TOKEN;
 
 const instance = axios.create({
   baseURL: import.meta.env.VITE_API_KEY,
