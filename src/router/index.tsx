@@ -29,7 +29,7 @@ const router = createBrowserRouter([
     element: <Navigate to="/" replace />
   }
 ], {
-  basename: '/favQs-react'
+  basename: '/favQs-react/'
 })
 
 export default router
