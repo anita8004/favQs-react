@@ -10,7 +10,7 @@ function Home() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const sessionData = useSelector((state: any) => state.user.session);
-  const isLoggedIn = sessionData?.login
+  const isLoggedIn = useSelector((state: any) => !!state.user.session?.login);
 
   useEffect(() => {
     if (!isLoggedIn) {
@@ -36,10 +36,10 @@ function Home() {
       </Flex>
       <Card className='user-card'>
         <Text as="div" size="2" weight="bold">
-          { sessionData.login }
+          { sessionData?.login }
         </Text>
         <Text as="div" size="2" color="gray">
-        { sessionData.email }
+        { sessionData?.email }
         </Text>
       </Card>
       <Box my="6">
