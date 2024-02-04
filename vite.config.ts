@@ -12,6 +12,14 @@ export default defineConfig(({ command }) => {
         '@': path.resolve(__dirname, 'src')
       }
     },
+    build: {
+      rollupOptions: {
+        input: {
+          main: path.resolve(__dirname, 'index.html'),
+          '404': path.resolve(__dirname, '404.html')
+        }
+      }
+    }
   }
 
   if (command === 'serve') {
