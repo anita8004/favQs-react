@@ -1,8 +1,34 @@
 import { Flex, Box, TextField, Heading, Link, Button } from '@radix-ui/themes'
 import * as Form from '@radix-ui/react-form'
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink } from 'react-router-dom'
+import userApi from '@/apis/user'
+import { useDispatch } from 'react-redux'
+import { setSession } from '@/store/reducers/userSlice'
+import { useNavigate } from 'react-router-dom'
 
 function SignUp() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const signUp = async (event: any) => {
+    event.preventDefault();
+    const data = Object.fromEntries(new FormData(event.currentTarget));
+    const payload = { user: JSON.parse(JSON.stringify(data)) }
+    console.log(payload);
+    try {
+      const res = await userApi.createUser(payload)
+      console.log(res)
+      if ('error_code' in res) {
+        console.log(res.message);
+      } else {
+        dispatch(setSession(res));
+        navigate('/');
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <div className='full-page'>
       <Flex
@@ -18,11 +44,7 @@ function SignUp() {
             className='full-page-title'
           >FavQs</Heading>
           <Form.Root className='form'
-            onSubmit={(event) => {
-              event.preventDefault();
-              const data = Object.fromEntries(new FormData(event.currentTarget));
-              console.log(data)
-            }}
+            onSubmit={signUp}
           >
             <Form.Field className='form-field' name="login">
               <div className='form-label-wrapper'>
@@ -33,7 +55,7 @@ function SignUp() {
               </div>
               <div className="form-control">
                 <Form.Control asChild>
-                  <TextField.Input type='text' required />
+                  <TextField.Input type='text' maxLength={20} autoComplete='username' required />
                 </Form.Control>
               </div>
             </Form.Field>
@@ -62,7 +84,7 @@ function SignUp() {
               </div>
               <div className="form-control">
                 <Form.Control asChild>
-                  <TextField.Input placeholder='Password' type='password' required />
+                  <TextField.Input placeholder='Password' type='password' minLength={5} maxLength={120} autoComplete='current-password' required />
                 </Form.Control>
               </div>
             </Form.Field>

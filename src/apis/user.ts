@@ -1,12 +1,13 @@
 import request from '@/utils/request'
 import {
   CreateUserPayloadState,
+  CreateUserResponseState,
   CreateSessionPayloadState,
   CreateSessionResponseState
 } from '@/types/user'
 
 /** 註冊 */
-const createUser = (payload: CreateUserPayloadState) => request.post('/users', payload)
+const createUser = (payload: CreateUserPayloadState): Promise<CreateUserResponseState> => request.post('/users', payload)
 
 /** 取得會員資訊 */
 const getUser = (login: string) => request.get(`users/${login}`)
