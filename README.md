@@ -23,7 +23,8 @@ https://favqs.com/api
 - [x] 登入
 - [x] 登出
 - [x] 註冊
-- [ ] 取得會員資訊
+- [x] 取得會員資訊
+- [ ] 訊息彈窗
 
 ## 遇到/已解決的問題
 - [x] react專案上傳到Github Pages
