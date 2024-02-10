@@ -27,3 +27,22 @@ export type CreateSessionResponseState = {
   login: string,
   email: string
 } | ErrorType
+
+export type DestroySessionResponseState = {
+  message: string
+} | ErrorType
+
+export type UserInfoType = {
+  login: string,
+  pic_url: string,
+  public_favorites_count: number,
+  followers: number,
+  following: number,
+  pro: boolean | null,
+  account_details: {
+    email: string,
+    private_favorites_count: number
+  }
+}
+
+export type UserInfoResponseState = UserInfoType | ErrorType;

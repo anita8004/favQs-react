@@ -1,17 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { RootState } from '@/store/store';
+import { REHYDRATE } from 'redux-persist'
 import {
-  CreateSessionResponseState
+  UserInfoType
 } from '@/types/user'
 import Cookies from 'js-cookie'
-import { local } from 'stokado'
 
-type userState = {
-  session: CreateSessionResponseState | null
-};
+export type userState = {
+  username: string,
+  isLoggedIn: boolean,
+  info: UserInfoType | Record<string, never>
+}
 
 const initialState: userState = {
-  session: local.session || null
+  username: '',
+  isLoggedIn: false,
+  info: {}
 }
 
 const userSlice = createSlice({
@@ -19,23 +22,33 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setSession: (state, action) => {
-      state.session = action.payload
-      local.session = action.payload
+      state.username = action.payload.login;
+      state.isLoggedIn = true;
       Cookies.set('User-Token', action.payload['User-Token'])
     },
     removeSession: (state) => {
-      state.session = null
-      delete local.session
+      state.username = '';
+      state.isLoggedIn = false;
+      state.info = {};
       Cookies.remove('User-Token')
+    },
+    setUserInfo: (state, action) => {
+      state.info = action.payload
     }
-  }
+  },
+  extraReducers(builder) {
+    builder.addCase(REHYDRATE, state => {
+      if (state.username) {
+        state.isLoggedIn = true
+      }
+    })
+  },
 })
 
 export const {
   setSession,
-  removeSession
+  removeSession,
+  setUserInfo
 } = userSlice.actions
-
-export const selectUser = (state: RootState) => state.user.session;
 
 export default userSlice.reducer

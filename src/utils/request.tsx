@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Cookies from 'js-cookie'
 
 const instance = axios.create({
   baseURL: import.meta.env.VITE_API_KEY,
@@ -10,6 +11,19 @@ const instance = axios.create({
   },
   withCredentials: false
 });
+
+instance.interceptors.request.use(
+  function (config) {
+    const userToken = Cookies.get('User-Token');
+    if (userToken) {
+      config.headers['User-Token'] = userToken
+    }
+    return config;
+  },
+  function (error) {
+    return Promise.reject(error);
+  }
+)
 
 instance.interceptors.response.use(
   function(response) {
