@@ -7,13 +7,13 @@ import userReducer from './reducers/userSlice'
 const persistConfig = {
   key: 'root',
   storage,
-  blocklist: ['counter']
+  blacklist: ['counter']
 }
 
 const userPersistConfig = {
   key: 'user',
   storage,
-  blocklist: ['isLoggedIn']
+  blacklist: ['isLoggedIn']
 }
 
 const rootReducer = combineReducers({
