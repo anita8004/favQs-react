@@ -18,6 +18,7 @@ https://favqs.com/api
 - [stokado](https://github.com/KID-joker/stokado?tab=readme-ov-file)
 - [js-cookie](https://github.com/js-cookie/js-cookie/tree/latest#readme)
 - [axios](https://axios-http.com/zh/docs/intro)
+- [redux-persist](https://www.npmjs.com/package/redux-persist)
 
 ## 功能
 - [x] 登入
