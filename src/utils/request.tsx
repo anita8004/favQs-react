@@ -29,6 +29,9 @@ instance.interceptors.response.use(
   function(response) {
     console.log('success response: ', response);
     if (response.status === 200) {
+      if ('error_code' in response.data) {
+        alert(response.data.message)
+      }
       return response.data
     }
     return response
