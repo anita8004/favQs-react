@@ -30,11 +30,11 @@ instance.interceptors.response.use(
     console.log('success response: ', response);
     if (response.status === 200) {
       if ('error_code' in response.data) {
-        alert(response.data.message)
         if (response.data.error_code === 20) {
           const signInPath = window.location.href + 'sign-in';
-          console.log(signInPath)
           window.location.assign(signInPath)
+        } else {
+          alert(response.data.message)
         }
       }
       return response.data
