@@ -6,6 +6,14 @@ import { SignInPayloadState } from '@/types/user'
 import { useDispatch } from 'react-redux'
 import { setSession } from '@/store/reducers/userSlice'
 import { useNavigate } from 'react-router-dom'
+import styled from 'styled-components'
+
+const SignInBox = styled.div`
+  width: 90%;
+  @media screen and (min-width: 768px) {
+    width: 50%;
+  }
+`
 
 function SignIn() {
   const dispatch = useDispatch();
@@ -41,7 +49,7 @@ function SignIn() {
         align="center"
         justify="center"
       >
-        <Box px="4" style={{ width: '40vw' }}>
+        <SignInBox>
           <Heading
             as="h1"
             className='full-page-title'
@@ -61,7 +69,7 @@ function SignIn() {
               </div>
               <div className="form-control">
                 <Form.Control asChild>
-                  <TextField.Input placeholder='Email' type='email' required />
+                  <TextField.Input placeholder='Email' type='email' autoComplete='email' required />
                 </Form.Control>
               </div>
             </Form.Field>
@@ -74,7 +82,7 @@ function SignIn() {
               </div>
               <div className="form-control">
                 <Form.Control asChild>
-                  <TextField.Input placeholder='Password' type='password' required />
+                  <TextField.Input placeholder='Password' type='password' autoComplete='current-password' required />
                 </Form.Control>
               </div>
             </Form.Field>
@@ -84,7 +92,7 @@ function SignIn() {
               </Form.Submit>
             </div>
           </Form.Root>
-        </Box>
+        </SignInBox>
         <Link size="2" style={{ marginTop: '.5rem' }} asChild>
           <RouterLink to="/sign-up">Sign Up</RouterLink>
         </Link>

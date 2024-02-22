@@ -5,6 +5,14 @@ import userApi from '@/apis/user'
 import { useDispatch } from 'react-redux'
 import { setSession } from '@/store/reducers/userSlice'
 import { useNavigate } from 'react-router-dom'
+import styled from 'styled-components'
+
+const SignUpBox = styled.div`
+  width: 90%;
+  @media screen and (min-width: 768px) {
+    width: 50%;
+  }
+`
 
 function SignUp() {
   const dispatch = useDispatch();
@@ -38,7 +46,7 @@ function SignUp() {
         align="center"
         justify="center"
       >
-        <Box px="4" style={{ width: '40vw' }}>
+        <SignUpBox>
           <Heading
             as="h1"
             className='full-page-title'
@@ -94,7 +102,7 @@ function SignUp() {
               </Form.Submit>
             </div>
           </Form.Root>
-        </Box>
+        </SignUpBox>
         <Link size="2" style={{ marginTop: '.5rem' }} asChild>
           <RouterLink to="/sign-in">Back to Sign In</RouterLink>
         </Link>
