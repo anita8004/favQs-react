@@ -1,4 +1,4 @@
-import { Flex, Box, TextField, Heading, Link, Button } from '@radix-ui/themes'
+import { Flex, TextField, Heading, Link, Button } from '@radix-ui/themes'
 import * as Form from '@radix-ui/react-form'
 import { Link as RouterLink } from 'react-router-dom'
 import userApi from '@/apis/user'
